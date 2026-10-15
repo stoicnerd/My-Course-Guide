@@ -25,6 +25,10 @@ app.use(compression()); // Enables gzip compression
 app.use(bodyParser.json()); // Lets express handle JSON encoded data sent on the body of requests
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get("/healthcheck", (req, res) => {
+  res.status(200).end();
+});
+
 /****************** Serve Static Files --> JS, CSS, IMAGES ETC ******************/
 app.use(
   express.static(path.join(__dirname, "../build"), { maxAge: cacheTime })
